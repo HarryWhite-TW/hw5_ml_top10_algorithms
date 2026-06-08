@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Machine Learning TOP 10 Algorithms</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <nav class="topbar">
+      <div class="brand">
+        <span class="brand-mark">ML</span>
+        <span>TOP 10 Algorithms</span>
+      </div>
+      <a class="github-link" href="#build-process">GitHub Record</a>
+    </nav>
+    <section class="hero-grid">
+      <div>
+        <p class="eyebrow">Interactive Machine Learning Handbook</p>
+        <h1>機器學習十大演算法互動學習沙盒</h1>
+        <p class="hero-copy">用深色 AI 儀表板風格整理核心觀念、公式、優缺點、程式片段與參數視覺化，適合作為課堂作業與 GitHub 作品集展示。</p>
+        <div class="hero-actions">
+          <a href="#explorer" class="primary-action">開始探索</a>
+          <a href="#quiz" class="secondary-action">挑戰小測驗</a>
+        </div>
+      </div>
+      <div class="hero-panel">
+        <div class="radar">
+          <span></span><span></span><span></span><span></span>
+        </div>
+        <div class="hero-stat">
+          <strong id="viewedCount">0/10</strong>
+          <span>已瀏覽演算法</span>
+        </div>
+        <div class="progress-shell">
+          <div id="viewProgress" class="progress-fill"></div>
+        </div>
+      </div>
+    </section>
+  </header>
+
+  <main class="app-shell">
+    <aside class="sidebar" aria-label="演算法導覽">
+      <div class="control-block">
+        <label for="searchInput">搜尋</label>
+        <input id="searchInput" type="search" placeholder="輸入 regression、分類、PCA...">
+      </div>
+      <div class="control-block">
+        <label for="categoryFilter">類別</label>
+        <select id="categoryFilter">
+          <option value="all">全部類別</option>
+          <option value="Regression">Regression</option>
+          <option value="Classification">Classification</option>
+          <option value="Clustering">Clustering</option>
+          <option value="Ensemble">Ensemble</option>
+          <option value="Dimensionality Reduction">Dimensionality Reduction</option>
+        </select>
+      </div>
+      <div class="control-block">
+        <label for="difficultyFilter">難度</label>
+        <select id="difficultyFilter">
+          <option value="all">全部難度</option>
+          <option value="入門">入門</option>
+          <option value="中階">中階</option>
+          <option value="進階">進階</option>
+        </select>
+      </div>
+      <div id="algorithmNav" class="algorithm-nav"></div>
+    </aside>
+
+    <section id="explorer" class="content">
+      <article class="algorithm-card glass">
+        <div class="card-top">
+          <div>
+            <p id="algoChinese" class="eyebrow"></p>
+            <h2 id="algoName"></h2>
+          </div>
+          <div class="tag-row">
+            <span id="algoCategory" class="tag"></span>
+            <span id="algoDifficulty" class="tag difficulty"></span>
+          </div>
+        </div>
+        <p id="algoIdea" class="core-idea"></p>
+        <p id="algoExplanation" class="explanation"></p>
+
+        <div class="detail-grid">
+          <section>
+            <h3>Key Formula / Concept</h3>
+            <p id="algoFormula" class="formula"></p>
+          </section>
+          <section>
+            <h3>Best Use Cases</h3>
+            <ul id="algoUseCases"></ul>
+          </section>
+        </div>
+
+        <div class="pros-cons">
+          <section id="prosCard" class="mini-card">
+            <h3>優點</h3>
+            <ul id="algoPros"></ul>
+          </section>
+          <section id="consCard" class="mini-card">
+            <h3>限制</h3>
+            <ul id="algoCons"></ul>
+          </section>
+        </div>
+
+        <section class="code-zone">
+          <div class="section-title">
+            <h3>Tiny Python-style Snippet</h3>
+            <button id="copyCode" class="icon-button" type="button">Copy</button>
+          </div>
+          <pre><code id="algoCode"></code></pre>
+          <p id="copyStatus" class="copy-status" aria-live="polite"></p>
+        </section>
+
+        <section class="question-box">
+          <h3>Common Interview / Learning Question</h3>
+          <p id="algoQuestion"></p>
+        </section>
+
+        <section class="sandbox">
+          <div class="section-title">
+            <h3>Parameter Sandbox</h3>
+            <button id="learnButton" type="button" class="learn-button">標記已學會</button>
+          </div>
+          <div class="sandbox-layout">
+            <div class="viz-card">
+              <canvas id="demoCanvas" width="420" height="250"></canvas>
+            </div>
+            <div class="slider-card">
+              <label id="sliderLabel" for="parameterSlider"></label>
+              <input id="parameterSlider" type="range">
+              <p id="sliderValue"></p>
+              <p id="sandboxNote"></p>
+            </div>
+          </div>
+        </section>
+      </article>
+
+      <section id="matrix" class="glass section-block">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">Comparison Matrix</p>
+            <h2>演算法比較矩陣</h2>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Algorithm</th>
+                <th>Category</th>
+                <th>Interpretability</th>
+                <th>Speed</th>
+                <th>Data Size</th>
+                <th>Typical Use</th>
+              </tr>
+            </thead>
+            <tbody id="comparisonBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="quiz" class="glass section-block">
+        <p class="eyebrow">Mini Quiz</p>
+        <h2>五題快速檢核</h2>
+        <div id="quizList" class="quiz-list"></div>
+        <button id="submitQuiz" class="primary-action button-reset" type="button">送出答案</button>
+        <p id="quizResult" class="quiz-result"></p>
+      </section>
+
+      <section id="roadmap" class="glass section-block">
+        <p class="eyebrow">Learning Roadmap</p>
+        <h2>學習路線圖</h2>
+        <div class="roadmap">
+          <div><strong>1. 監督式基礎</strong><span>Linear / Logistic Regression 建立模型與損失函數直覺。</span></div>
+          <div><strong>2. 決策與距離</strong><span>Decision Tree、KNN 學會可解釋規則與相似度思維。</span></div>
+          <div><strong>3. 分群與降維</strong><span>K-Means、PCA 了解沒有標籤時如何整理資料結構。</span></div>
+          <div><strong>4. 集成模型</strong><span>Random Forest、Gradient Boosting 練習提升穩定度與準確率。</span></div>
+          <div><strong>5. 模型選擇</strong><span>依任務、資料量、速度與可解釋性選擇合適演算法。</span></div>
+        </div>
+      </section>
+
+      <section id="build-process" class="glass section-block">
+        <p class="eyebrow">Build Process / GitHub Record</p>
+        <h2>開發紀錄提醒</h2>
+        <p>本作業建議保留清楚的 Git commit 歷史：規劃內容、建立版面、加入互動、補上 README 與 BUILD_LOG，讓老師可以看到 AI 輔助開發的完整過程。</p>
+      </section>
+    </section>
+
+    <aside class="assistant-panel glass" aria-label="AI assistant demo">
+      <h2>AI 演算法助教</h2>
+      <label for="apiKeyInput">API Key</label>
+      <div class="key-row">
+        <input id="apiKeyInput" type="password" placeholder="貼上 API key（僅示範，不會送出）">
+        <button id="saveKey" type="button">儲存</button>
+      </div>
+      <p class="security-note">此作業版不會真的連接 API，輸入框只用於模擬產品介面。</p>
+      <div id="chatLog" class="chat-log"></div>
+      <div class="prompt-chips">
+        <button type="button">我該怎麼選演算法？</button>
+        <button type="button">回歸和分類差在哪？</button>
+        <button type="button">K-Means 是監督式嗎？</button>
+        <button type="button">哪個最適合新手？</button>
+      </div>
+      <div class="chat-input-row">
+        <input id="chatInput" type="text" placeholder="問我 regression、classification、clustering 或演算法選擇">
+        <button id="sendChat" type="button">送出</button>
+      </div>
+    </aside>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
