@@ -190,8 +190,16 @@
       </section>
     </section>
 
-    <aside class="assistant-panel glass" aria-label="AI assistant demo">
-      <h2>AI 演算法助教</h2>
+    <button id="assistantTab" class="assistant-tab" type="button" aria-controls="assistantDrawer" aria-expanded="false">
+      <span class="status-dot" aria-hidden="true"></span>
+      <span>AI 助教</span>
+    </button>
+
+    <aside id="assistantDrawer" class="assistant-panel glass" aria-label="AI assistant demo" aria-hidden="true">
+      <div class="assistant-header">
+        <h2>AI 演算法助教</h2>
+        <button id="closeAssistant" class="close-assistant" type="button" aria-label="收合 AI 助教">收合</button>
+      </div>
       <label for="apiKeyInput">API Key</label>
       <div class="key-row">
         <input id="apiKeyInput" type="password" placeholder="貼上 API key（僅示範，不會送出）">

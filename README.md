@@ -4,7 +4,7 @@
 
 ## Demo 說明
 
-本網站像一份互動式機器學習手冊與小型沙盒，使用者可以瀏覽十大演算法、搜尋與篩選、調整參數 demo、複製 Python-style 程式片段、完成小測驗，並使用 demo-only AI 助理介面練習問答。
+本網站像一份互動式機器學習手冊與小型沙盒，使用者可以瀏覽十大演算法、搜尋與篩選、調整參數 demo、複製 Python-style 程式片段、完成小測驗，並使用可收合的 demo-only AI 助理介面練習問答。
 
 ## 作業需求摘要
 
@@ -27,7 +27,7 @@
 - 學習進度：記錄已瀏覽演算法數量。
 - Mark as learned：使用 `localStorage` 保存已學會狀態。
 - 程式碼複製按鈕：快速複製每個演算法的小片段。
-- Demo AI assistant：包含 API key 輸入 UI，但只儲存 masked demo state，完全不發送外部請求。
+- Demo AI assistant：以可收合抽屜呈現，不阻擋主要學習內容；包含 API key 輸入 UI，但只儲存 masked demo state，完全不發送外部請求。
 
 ## Tech Stack
 
@@ -83,6 +83,7 @@ hw5_ml_top10_algorithms/
 - API key input 只是模擬真實產品介面。
 - Save 按鈕只會在 `localStorage` 儲存 `masked-demo-key` 這種示範狀態。
 - AI assistant 回覆全部由前端關鍵字規則產生。
+- AI assistant 預設收合為右側 `AI 助教` 分頁，需要時才展開。
 
 ## Learning Reflection
 

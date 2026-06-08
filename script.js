@@ -210,7 +210,10 @@ const els = {
   saveKey: document.getElementById("saveKey"),
   chatLog: document.getElementById("chatLog"),
   chatInput: document.getElementById("chatInput"),
-  sendChat: document.getElementById("sendChat")
+  sendChat: document.getElementById("sendChat"),
+  assistantTab: document.getElementById("assistantTab"),
+  assistantDrawer: document.getElementById("assistantDrawer"),
+  closeAssistant: document.getElementById("closeAssistant")
 };
 
 function list(items) {
@@ -555,6 +558,18 @@ function sendChat() {
   window.setTimeout(() => addMessage("bot", demoReply(text)), 220);
 }
 
+function setAssistantOpen(isOpen) {
+  els.assistantDrawer.classList.toggle("is-open", isOpen);
+  els.assistantDrawer.setAttribute("aria-hidden", String(!isOpen));
+  els.assistantTab.setAttribute("aria-expanded", String(isOpen));
+  els.assistantTab.classList.toggle("is-hidden", isOpen);
+  if (isOpen) {
+    window.setTimeout(() => els.chatInput.focus(), 260);
+  } else {
+    els.assistantTab.focus();
+  }
+}
+
 function init() {
   viewed.add(current.id);
   localStorage.setItem("viewedAlgorithms", JSON.stringify([...viewed]));
@@ -572,6 +587,13 @@ function init() {
   els.submitQuiz.addEventListener("click", gradeQuiz);
   els.saveKey.addEventListener("click", saveDemoKey);
   els.sendChat.addEventListener("click", sendChat);
+  els.assistantTab.addEventListener("click", () => setAssistantOpen(true));
+  els.closeAssistant.addEventListener("click", () => setAssistantOpen(false));
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && els.assistantDrawer.classList.contains("is-open")) {
+      setAssistantOpen(false);
+    }
+  });
   els.chatInput.addEventListener("keydown", (event) => {
     if (event.key === "Enter") sendChat();
   });
